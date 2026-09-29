@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <header>
+
+        <h2>🛡️ Cyber Security Incident Reporting System</h2>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="report.html">Report Incident</a>
+            <a href="status.html">Check Status</a>
+            <a href="admin.html">Admin</a>
+            <a href="index.html">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <div class="container">
+
+        <h1>🛡️ Admin Panel</h1>
+
+        <h2>Reported Incident</h2>
+
+        <div id="incidentDetails">
+            No incident reported yet.
+        </div>
+
+        <br>
+
+        <label>Update Status:</label>
+
+        <select id="newStatus">
+            <option>Under Investigation</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="updateStatus()">Update Status</button>
+
+        <p id="updateMessage"></p>
+
+        <br>
+
+        <button onclick="location.href='dashboard.html'">
+            Back to Dashboard
+        </button>
+
+    </div>
+
+
+    <footer>
+
+        <p>© 2026 Cyber Security Incident Reporting System</p>
+
+        <p>Software Engineering Prototype</p>
+
+    </footer>
+
+
+    <script>
+
+        var incidentId = localStorage.getItem("incidentId");
+
+        if (incidentId) {
+
+            var type = localStorage.getItem("incidentType");
+            var description = localStorage.getItem("description");
+            var date = localStorage.getItem("date");
+            var status = localStorage.getItem("status");
+
+            document.getElementById("incidentDetails").innerHTML =
+                "Incident ID: " + incidentId + "<br><br>" +
+                "Incident Type: " + type + "<br><br>" +
+                "Description: " + description + "<br><br>" +
+                "Date: " + date + "<br><br>" +
+                "Status: " + status;
+
+        }
+
+
+        function updateStatus() {
+
+            var newStatus = document.getElementById("newStatus").value;
+
+            localStorage.setItem("status", newStatus);
+
+            document.getElementById("updateMessage").innerHTML =
+                "Incident status updated to: " + newStatus;
+        }
+
+    </script>
+
+
+</body>
+
+</html>

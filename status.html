@@ -1,0 +1,227 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Status</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin-top: 10px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        /* TITLE */
+
+        .title-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .title-box h2 {
+            margin: 0;
+            color: #172554;
+        }
+
+        /* REPORTS */
+
+        #statusReports {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* REPORT CARD */
+
+        .report-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #fafafa;
+        }
+
+        .report-item h3 {
+            color: #172554;
+            margin-top: 0;
+        }
+
+        .report-item p {
+            margin: 9px 0;
+        }
+
+        /* STATUS */
+
+        .status-badge {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 10px 15px;
+
+            border-radius: 20px;
+
+            background: #fef3c7;
+
+            color: #92400e;
+
+            font-weight: bold;
+        }
+
+        /* BACK BUTTON */
+
+        .button-area {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 25px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #172554;
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e3a8a;
+        }
+
+        /* EMPTY */
+
+        .no-reports {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+
+    </style>
+
+</head>
+
+
+<body onload="loadStatusReports()">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>
+            🛡️ Cyber Security Incident Reporting System
+        </h1>
+
+        <p>
+            My Report Status
+        </p>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <!-- TITLE -->
+
+        <div class="title-box">
+
+            <h2>
+                📋 My Incident Reports
+            </h2>
+
+            <p>
+                Check the current status of your submitted cyber security incidents.
+            </p>
+
+        </div>
+
+
+        <!-- REPORTS -->
+
+        <div id="statusReports">
+
+            <div class="no-reports">
+                Loading reports...
+            </div>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <div class="button-area">
+
+            <button onclick="goBack()">
+                ← Back to Dashboard
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- SCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,176 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            color: #172554;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .report-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .status-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .logout-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            🛡️ Cyber Security Incident Reporting System
+        </h1>
+
+        <p>
+            User Dashboard
+        </p>
+
+    </header>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                Welcome User 👋
+            </h2>
+
+            <p>
+                You have successfully logged in.
+            </p>
+
+            <p>
+                From here you can report cyber security incidents
+                and check your report status.
+            </p>
+
+
+            <div class="buttons">
+
+                <button
+                    class="report-btn"
+                    onclick="openReport()"
+                >
+                    🚨 Report Incident
+                </button>
+
+
+                <button
+                    class="status-btn"
+                    onclick="openStatus()"
+                >
+                    📋 Check Report Status
+                </button>
+
+
+                <button
+                    class="logout-btn"
+                    onclick="logout()"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openReport() {
+
+            window.location.href =
+                "report.html";
+
+        }
+
+
+        function openStatus() {
+
+            window.location.href =
+                "status.html";
+
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("loggedInUser");
+
+            localStorage.removeItem("userRole");
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```

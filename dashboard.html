@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Cyber Security Incident Reporting System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* Header */
+        .header {
+            background: #111827;
+            color: white;
+            padding: 18px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-top: 5px;
+        }
+
+        .logout-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Main container */
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 30px auto;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .welcome-card h2 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .welcome-card p {
+            color: #64748b;
+        }
+
+        /* Statistics */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .total .number {
+            color: #2563eb;
+        }
+
+        .investigation .number {
+            color: #d97706;
+        }
+
+        .progress .number {
+            color: #7c3aed;
+        }
+
+        .resolved .number {
+            color: #16a34a;
+        }
+
+        /* Reports section */
+        .reports-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .reports-section h2 {
+            margin-bottom: 5px;
+            color: #111827;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* Search + Filter */
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-section input {
+            flex: 1;
+            min-width: 250px;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .filter-section select {
+            min-width: 210px;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .filter-section input:focus,
+        .filter-section select:focus {
+            outline: none;
+            border: 2px solid #2563eb;
+        }
+
+        /* Report Card */
+        .report-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #fafcff;
+            transition: 0.2s;
+        }
+
+        .report-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+        }
+
+        .report-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .report-id {
+            font-weight: bold;
+            color: #2563eb;
+            font-size: 16px;
+        }
+
+        .report-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+        .info-box strong {
+            display: block;
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .info-box span {
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .description {
+            background: white;
+            padding: 12px;
+            border-radius: 7px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
+        }
+
+        .description strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .description p {
+            color: #475569;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* Status */
+        .status-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .status-area label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-select {
+            padding: 9px 12px;
+            border-radius: 7px;
+            border: 1px solid #cbd5e1;
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Empty reports */
+        .no-reports {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+        }
+
+        .no-reports h3 {
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 15px 18px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .report-info {
+                grid-template-columns: 1fr;
+            }
+
+            .reports-section {
+                padding: 18px;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+
+            .filter-section input,
+            .filter-section select {
+                width: 100%;
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body onload="loadAdminReports()">
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <h1>🛡️ Cyber Security Admin Panel</h1>
+            <p>Incident Reporting & Management System</p>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Welcome -->
+        <div class="welcome-card">
+            <h2>Welcome, Administrator 👋</h2>
+            <p>
+                Monitor, investigate and manage all reported cyber security incidents.
+            </p>
+        </div>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card total">
+                <h3>Total Reports</h3>
+                <div class="number" id="totalReports">0</div>
+            </div>
+
+            <div class="stat-card investigation">
+                <h3>Under Investigation</h3>
+                <div class="number" id="investigationReports">0</div>
+            </div>
+
+            <div class="stat-card progress">
+                <h3>In Progress</h3>
+                <div class="number" id="progressReports">0</div>
+            </div>
+
+            <div class="stat-card resolved">
+                <h3>Resolved</h3>
+                <div class="number" id="resolvedReports">0</div>
+            </div>
+
+        </section>
+
+
+        <!-- Reports -->
+        <section class="reports-section">
+
+            <h2>🚨 Incident Reports</h2>
+
+            <p class="section-subtitle">
+                Search reports and filter them according to their current status.
+            </p>
+
+
+            <!-- Search and Status Filter -->
+            <div class="filter-section">
+
+                <input
+                    type="text"
+                    id="searchReport"
+                    placeholder="🔍 Search by Report ID, User or Incident Type..."
+                    oninput="filterAdminReports()"
+                >
+
+                <select
+                    id="statusFilter"
+                    onchange="filterAdminReports()"
+                >
+                    <option value="All">All Status</option>
+                    <option value="Under Investigation">
+                        Under Investigation
+                    </option>
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+                    <option value="Resolved">
+                        Resolved
+                    </option>
+                </select>
+
+            </div>
+
+
+            <!-- Reports will load here -->
+            <div id="adminReports">
+
+                <div class="no-reports">
+                    <h3>Loading Reports...</h3>
+                    <p>Please wait while incident reports are loaded.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+```

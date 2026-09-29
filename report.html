@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Incident</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <div class="form-box">
+
+            <h1>🛡️ Report Cyber Security Incident</h1>
+
+            <p>
+                Please provide the details of the incident.
+            </p>
+
+
+            <label>Incident Type</label>
+
+            <select id="incidentType">
+
+                <option value="">
+                    Select Incident Type
+                </option>
+
+                <option value="Phishing">
+                    Phishing
+                </option>
+
+                <option value="Malware">
+                    Malware
+                </option>
+
+                <option value="Hacking">
+                    Hacking
+                </option>
+
+                <option value="Data Breach">
+                    Data Breach
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label>Incident Description</label>
+
+            <textarea
+                id="description"
+                rows="6"
+                placeholder="Describe what happened...">
+            </textarea>
+
+
+            <label>Date of Incident</label>
+
+            <input
+                type="date"
+                id="incidentDate">
+
+
+            <button onclick="submitReport()">
+                SUBMIT REPORT
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="goBack()">
+
+                BACK
+
+            </button>
+
+
+            <p id="reportMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

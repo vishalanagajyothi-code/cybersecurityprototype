@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-box {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #error {
+            text-align: center;
+            color: red;
+            margin-top: 15px;
+        }
+
+        .demo {
+            margin-top: 20px;
+            padding: 12px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>🛡️ Cyber Security</h1>
+
+        <p class="subtitle">
+            Incident Reporting System
+        </p>
+
+        <label>Username</label>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+        >
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+        >
+
+        <label>Select Role</label>
+
+        <select id="role">
+
+            <option value="">
+                -- Select Role --
+            </option>
+
+            <option value="admin">
+                Admin
+            </option>
+
+            <option value="user">
+                User
+            </option>
+
+        </select>
+
+        <button onclick="loginUser()">
+            LOGIN
+        </button>
+
+        <p id="error"></p>
+
+        <div class="demo">
+
+            <b>Demo Login</b>
+
+            <br><br>
+
+            Admin → admin / 1234
+
+            <br>
+
+            User → user / 1234
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function loginUser() {
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const role =
+                document.getElementById("role").value;
+
+            const error =
+                document.getElementById("error");
+
+
+            // ADMIN LOGIN
+
+            if (
+                username === "admin" &&
+                password === "1234" &&
+                role === "admin"
+            ) {
+
+                localStorage.setItem(
+                    "loggedInUser",
+                    "admin"
+                );
+
+                localStorage.setItem(
+                    "userRole",
+                    "admin"
+                );
+
+                window.location.href =
+                    "dashboard.html";
+
+                return;
+            }
+
+
+            // USER LOGIN
+
+            if (
+                username === "user" &&
+                password === "1234" &&
+                role === "user"
+            ) {
+
+                localStorage.setItem(
+                    "loggedInUser",
+                    "user"
+                );
+
+                localStorage.setItem(
+                    "userRole",
+                    "user"
+                );
+
+                window.location.href =
+                    "user-dashboard.html";
+
+                return;
+            }
+
+
+            // WRONG LOGIN
+
+            error.textContent =
+                "❌ Invalid username, password or role.";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
